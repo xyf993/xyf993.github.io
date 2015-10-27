@@ -4,35 +4,38 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>CSS篇—— line-height | Daydreamer-Xyf</title>
+    <title>清除浮动的七种方法 | Daydreamer-Xyf</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ebtitel">
     
 
     
-    <meta name="description" content="最近看了很多关于剖析line-height和vertical-align的文章，才发现它们背后都大有文章，自己稍作皮毛总结我所理解到的。
-先说line-height
-基本知识：顶线，中线，基线，底线。其中最关键的是基线，基线则是字母“x”的下沿线，故有“x-height”一概念。
-行高则是两行文字的基线到基线之间的距离。
-行框（line box）：行框的高度取决于包裹元素的最大行高值，一个没有设置">
+    <meta name="description" content="1.给父级加 overflow:hidden;但是在ie6,7下可能不兼容，要用到zoom
+2.加高度height，缺点是扩展性不好，当内容高度不固定时。
+3.给页面中所有元素加浮动，但是会让水平上的margin：0 auto失效.
+4.换行符br清楚浮动，但是不符合样式结构分离。
+5.inline-block,同3,margin水平失效
+6.空标签清浮动。设空标签高度为0，但是在IE6下有问题，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS篇—— line-height">
-<meta property="og:url" content="http://yoursite.com/2015/10/26/CSS篇——-line-height/index.html">
+<meta property="og:title" content="清除浮动的七种方法">
+<meta property="og:url" content="http://yoursite.com/2015/10/27/清除浮动的七种方法/index.html">
 <meta property="og:site_name" content="Daydreamer-Xyf">
-<meta property="og:description" content="最近看了很多关于剖析line-height和vertical-align的文章，才发现它们背后都大有文章，自己稍作皮毛总结我所理解到的。
-先说line-height
-基本知识：顶线，中线，基线，底线。其中最关键的是基线，基线则是字母“x”的下沿线，故有“x-height”一概念。
-行高则是两行文字的基线到基线之间的距离。
-行框（line box）：行框的高度取决于包裹元素的最大行高值，一个没有设置">
-<meta property="og:updated_time" content="2015-10-26T08:12:30.782Z">
+<meta property="og:description" content="1.给父级加 overflow:hidden;但是在ie6,7下可能不兼容，要用到zoom
+2.加高度height，缺点是扩展性不好，当内容高度不固定时。
+3.给页面中所有元素加浮动，但是会让水平上的margin：0 auto失效.
+4.换行符br清楚浮动，但是不符合样式结构分离。
+5.inline-block,同3,margin水平失效
+6.空标签清浮动。设空标签高度为0，但是在IE6下有问题，">
+<meta property="og:updated_time" content="2015-10-27T13:13:57.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS篇—— line-height">
-<meta name="twitter:description" content="最近看了很多关于剖析line-height和vertical-align的文章，才发现它们背后都大有文章，自己稍作皮毛总结我所理解到的。
-先说line-height
-基本知识：顶线，中线，基线，底线。其中最关键的是基线，基线则是字母“x”的下沿线，故有“x-height”一概念。
-行高则是两行文字的基线到基线之间的距离。
-行框（line box）：行框的高度取决于包裹元素的最大行高值，一个没有设置">
+<meta name="twitter:title" content="清除浮动的七种方法">
+<meta name="twitter:description" content="1.给父级加 overflow:hidden;但是在ie6,7下可能不兼容，要用到zoom
+2.加高度height，缺点是扩展性不好，当内容高度不固定时。
+3.给页面中所有元素加浮动，但是会让水平上的margin：0 auto失效.
+4.换行符br清楚浮动，但是不符合样式结构分离。
+5.inline-block,同3,margin水平失效
+6.空标签清浮动。设空标签高度为0，但是在IE6下有问题，">
 
     
     <link rel="alternative" href="/atom.xml" title="Daydreamer-Xyf" type="application/atom+xml">
@@ -92,14 +95,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/10/26/CSS篇——-line-height/" title="CSS篇—— line-height" itemprop="url">CSS篇—— line-height</a>
+      <a href="/2015/10/27/清除浮动的七种方法/" title="清除浮动的七种方法" itemprop="url">清除浮动的七种方法</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-26T08:11:44.000Z" itemprop="datePublished"> 發表於 2015-10-26</time>
+    <time datetime="2015-10-27T13:13:40.000Z" itemprop="datePublished"> 發表於 2015-10-27</time>
     
   </p>
 </header>
@@ -112,18 +115,13 @@
 		
 		</div>
 		
-		<p>最近看了很多关于剖析line-height和vertical-align的文章，才发现它们背后都大有文章，自己稍作皮毛总结我所理解到的。</p>
-<p>先说line-height</p>
-<p>基本知识：顶线，中线，基线，底线。其中最关键的是基线，基线则是字母“x”的下沿线，故有“x-height”一概念。</p>
-<p>行高则是两行文字的基线到基线之间的距离。</p>
-<p>行框（line box）：行框的高度取决于包裹元素的最大行高值，一个没有设置height属性的div的高度就是由一个一个line boxes的高度堆积而成的，也可以说是行内框最大的值。</p>
-<p>行内框：每行文字都会被一个行内框包裹，内容的高度  如果有行高 则加上 （行高-字体）/2为半行距，分别添加到文字的上下之后的高度。</p>
-<p> 所以一个div的高度并不是被里面的文字大小撑开的， 而是与line-height有关系。</p>
-<p>单行文字垂直居中，我们传统方法是height=line-height，其实可以省去height。</p>
-<p>多行文字居中</p>
-<p>　　a.若外层div高度不固定，直接使用padding</p>
-<p>　　b.外层div高度固定：文字包裹一个span，设置display为inline-block  （但IE6，7不支持）</p>
-<p>以上张鑫旭博客中有举例（<a href="http://www.zhangxinxu.com/wordpress/2009/11/css行高line-height的一些深入理解及应用/）" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2009/11/css行高line-height的一些深入理解及应用/）</a></p>
+		<p>1.给父级加 overflow:hidden;但是在ie6,7下可能不兼容，要用到zoom</p>
+<p>2.加高度height，缺点是扩展性不好，当内容高度不固定时。</p>
+<p>3.给页面中所有元素加浮动，但是会让水平上的margin：0 auto失效.</p>
+<p>4.换行符br清楚浮动，但是不符合样式结构分离。</p>
+<p>5.inline-block,同3,margin水平失效</p>
+<p>6.空标签清浮动。设空标签高度为0，但是在IE6下有问题，因为IE6要求元素最小高度为19px，加font-size可以解决，但是仍有2px存在</p>
+<p>7.现在主流方法：<br>.clear:after{content:’’;display:’block’,clear:both;}  ie6.7不支持<br>.clear{zoom:1;} ie触发haslayout</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -136,7 +134,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2015/10/26/CSS篇——-line-height/" data-title="CSS篇—— line-height | Daydreamer-Xyf" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2015/10/27/清除浮动的七种方法/" data-title="清除浮动的七种方法 | Daydreamer-Xyf" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -149,19 +147,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/10/27/清除浮动的七种方法/" title="清除浮动的七种方法">
-  <strong>上一篇：</strong><br/>
-  <span>
-  清除浮动的七种方法</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/10/21/CSS篇——BFC与margin/"  title="CSS篇——BFC与margin">
+<a href="/2015/10/26/CSS篇——-line-height/"  title="CSS篇—— line-height">
  <strong>下一篇：</strong><br/> 
- <span>CSS篇——BFC与margin
+ <span>CSS篇—— line-height
 </span>
 </a>
 </div>

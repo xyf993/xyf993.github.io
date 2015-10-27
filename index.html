@@ -81,6 +81,62 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/10/27/清除浮动的七种方法/" title="清除浮动的七种方法" itemprop="url">清除浮动的七种方法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-27T13:13:40.000Z" itemprop="datePublished"> 發表於 2015-10-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>1.给父级加 overflow:hidden;但是在ie6,7下可能不兼容，要用到zoom</p>
+<p>2.加高度height，缺点是扩展性不好，当内容高度不固定时。</p>
+<p>3.给页面中所有元素加浮动，但是会让水平上的margin：0 auto失效.</p>
+<p>4.换行符br清楚浮动，但是不符合样式结构分离。</p>
+<p>5.inline-block,同3,margin水平失效</p>
+<p>6.空标签清浮动。设空标签高度为0，但是在IE6下有问题，因为IE6要求元素最小高度为19px，加font-size可以解决，但是仍有2px存在</p>
+<p>7.现在主流方法：<br>.clear:after{content:’’;display:’block’,clear:both;}  ie6.7不支持<br>.clear{zoom:1;} ie触发haslayout</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/10/26/CSS篇——-line-height/" title="CSS篇—— line-height" itemprop="url">CSS篇—— line-height</a>
   </h1>
   <p class="article-author">By
