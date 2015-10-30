@@ -27,7 +27,7 @@ Delegating the focus and blur events
 我的翻译：
 　　　　委托focus和blur事件
 　现在很多JavaScript编写者们都已经了解到了事件委托的好处。Chris H">
-<meta property="og:updated_time" content="2015-10-30T13:35:02.792Z">
+<meta property="og:updated_time" content="2015-10-30T13:36:55.651Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Delegating the focus and blur events">
 <meta name="twitter:description" content="这是Peter-Paul Koch写的一篇文章
@@ -121,7 +121,7 @@ Delegating the focus and blur events
 <p>我的翻译：</p>
 <p>　　　　委托focus和blur事件</p>
 <p>　现在很多JavaScript编写者们都已经了解到了事件委托的好处。Chris Helimann和Dan Webb曾论述过它的优势，我也在最近两年经常使用到它。</p>
-<p>　事件委托在一些情况下尤其有用，比如下拉菜单中，当我们直接在根节点上（一个’’’<ol>‘’’或’’’<ul>‘’’）注册事件将会比为每个链接注册事件简单很多。</ul></ol></p>
+<p>　事件委托在一些情况下尤其有用，比如下拉菜单中，当我们直接在根节点上（一个’<ol>‘或’’’<ul>‘’’）注册事件将会比为每个链接注册事件简单很多。</ul></ol></p>
 <p>　 但这里有个问题：尽管事件委托对鼠标事件来说能有效使用，但是对于focus和blur事件会失去作用，比如当我们制作一个键盘可访问的下来菜单时。</p>
 <p>   在我对事件研究的过程中，我发现了一种可以对focus和blur事件进行委托的方法。或许一个非常聪明的JavaScript库作者将会使用这种技术来减少几毫秒的计算时间。</p>
 <p>　　就我所知，他们已经意识到了这种方法，但是对我来说，是一种新方法，所以我把它发布出来了。</p>
