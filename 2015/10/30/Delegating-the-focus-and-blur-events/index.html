@@ -1,0 +1,493 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Delegating the focus and blur events | Daydreamer-Xyf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ebtitel">
+    
+
+    
+    <meta name="description" content="这是Peter-Paul Koch写的一篇文章
+Delegating the focus and blur events
+原文出自：http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
+我的翻译：
+　　　　委托focus和blur事件
+　现在很多JavaScript编写者们都已经了解到了事件委托的好处。Chris H">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Delegating the focus and blur events">
+<meta property="og:url" content="http://yoursite.com/2015/10/30/Delegating-the-focus-and-blur-events/index.html">
+<meta property="og:site_name" content="Daydreamer-Xyf">
+<meta property="og:description" content="这是Peter-Paul Koch写的一篇文章
+Delegating the focus and blur events
+原文出自：http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
+我的翻译：
+　　　　委托focus和blur事件
+　现在很多JavaScript编写者们都已经了解到了事件委托的好处。Chris H">
+<meta property="og:updated_time" content="2015-10-30T13:30:40.353Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Delegating the focus and blur events">
+<meta name="twitter:description" content="这是Peter-Paul Koch写的一篇文章
+Delegating the focus and blur events
+原文出自：http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html
+我的翻译：
+　　　　委托focus和blur事件
+　现在很多JavaScript编写者们都已经了解到了事件委托的好处。Chris H">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Daydreamer-Xyf" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Daydreamer-Xyf" title="Daydreamer-Xyf"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Daydreamer-Xyf">Daydreamer-Xyf</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/30/Delegating-the-focus-and-blur-events/" title="Delegating the focus and blur events" itemprop="url">Delegating the focus and blur events</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-30T13:00:09.000Z" itemprop="datePublished"> 發表於 2015-10-30</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			
+		
+		</div>
+		
+		<p>这是Peter-Paul Koch写的一篇文章</p>
+<p>Delegating the focus and blur events</p>
+<p>原文出自：<a href="http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html" target="_blank" rel="external">http://www.quirksmode.org/blog/archives/2008/04/delegating_the.html</a></p>
+<p>我的翻译：</p>
+<p>　　　　委托focus和blur事件</p>
+<p>　现在很多JavaScript编写者们都已经了解到了事件委托的好处。Chris Helimann和Dan Webb曾论述过它的优势，我也在最近两年经常使用到它。</p>
+<p>　事件委托在一些情况下尤其有用，比如下拉菜单中，当我们直接在根节点上（一个’’’<ol>‘’’或’’’<ul>‘’’）注册事件将会比为每个链接注册事件简单很多。</ul></ol></p>
+<p>　 但这里有个问题：尽管事件委托对鼠标事件来说能有效使用，但是对于focus和blur事件会失去作用，比如当我们制作一个键盘可访问的下来菜单时。</p>
+<p>   在我对事件研究的过程中，我发现了一种可以对focus和blur事件进行委托的方法。或许一个非常聪明的JavaScript库作者将会使用这种技术来减少几毫秒的计算时间。</p>
+<p>　　就我所知，他们已经意识到了这种方法，但是对我来说，是一种新方法，所以我把它发布出来了。</p>
+<p>例子：</p>
+<p>  什么是事件委托？</p>
+<p>这里简单描述一下，为了那些不知道的人，我用一个下拉菜单来说明。</p>
+<p>当一个用户使用鼠标来操控下拉菜单时，你会想捕获所有鼠标悬停和鼠标离开事件，为了知道用户的最后一个动作是要关闭还是打开菜单。（你也必须注意区分有用和无用的事件，因为firefox,safari,opera仍然不支持mouseenter和mouseleave事件，但这是另一个故事了）。</p>
+<p>mouseover和mouseout事件都会冒泡；当mouseover事件在一个链接上触发时，这个事件将会沿着DOM树向上，去查找这个节点的那些祖先元素有没有定义mouseover事件。它首先会检查它自身，然后检查包含它的li,接着就是ol等直到document或者window。</p>
+<p>这意味着你可以定义 onmouseover和onmouseout事件函数在像下拉菜单<ol>这样的根元素上，当事件在DOM树深层元素上触发时，事件冒泡可以冒泡到这个根元素上并执行函数。</ol></p>
+<p>‘’’<ol id="dropdown"><br>    <li><a href="#">List item 1</a><br>         <ol><br>             <li><a href="#">List item 1.1</a></li><br>             <li><a href="#">List item 1.2</a></li><br>             <li><a href="#">List item 1.3</a></li><br>         </ol><br>     </li><br>     [etc.]<br> </ol>‘’’<br> $(‘dropdown’).onmouseover = handleMouseOver;<br> $(‘dropdown’).onmouseout = handleMouseOut;</p>
+<p>这样的好处是你不必为每个a链接注册两个函数，还能节省一点浏览器内存。</p>
+<p>focus的问题</p>
+<p>这个事件本身没问题，但是，一旦你想让你的下拉菜单也能被键盘访问，你就会遇到一个问题。</p>
+<p>理论上，做出一个键盘可访问的下拉菜单很容易：你只需要为focus和blur事件注册函数。问题是这两个事件不会冒泡。一个链接的focus或blur事件只会触发它自身，不会触发它的祖先元素。</p>
+<p>这是一个古老的规则，有一些事件，比如focus、blur、change都不会冒泡。准确的原因在发展历史中一直都模糊不清。但是部分原因是因为这些事件对有些元素不会起作用。用户不能让一个段落获得焦点或者发生改变。因此，这些HTML元素不能设置这些事件。此外，它们也不能冒泡。</p>
+<p>请看下面这个例子：</p>
+<p>‘’’</p><p id="testParagraph"><br>    Some text.<br>    <input id="testInput"><br></p><p></p>
+<p>$(‘testParagraph’).onfocus = handleEventPar;<br>$(‘testInput’).onfocus = handleEventInput;’’’</p>
+<p>当用户在文本框上获得焦点时，handlerEventInput函数会被执行，但是，这个事件不会冒泡，所以handlerEventPar不会执行。另外，不可能对一个段落获得焦点（除非他又一个tabindex的属性），所以handlerEvenPar绝对不会执行。</p>
+<p>事件捕获</p>
+<p>解决这个问题除非你用事件捕获。</p>
+<p>事件捕获恰好和事件冒泡相反。事件冒泡是从目标元素向上沿着DOM树移动。当一个事件被捕获时，它从DOM树的顶层开始（通常是window和document）向下传播一直到目标元素。</p>
+<p>在我的事件研究中让我最困惑的结果是，当你在事件捕获阶段定义事件函数时，浏览器将会在目标元素的祖先元素上执行所有事件函数，不管这个事件对这个目标元素能不能作用。</p>
+<p>来让我们看一些例子，我们用addEventListner，并在事件捕获阶段调用事件处理程序。（把最后一个参数设置为true）<br>‘’’</p><p id="testParagraph"><br>    Some text.<br>    <input id="testInput"><br></p><p></p>
+<p>$(‘testParagraph’).onfocus = handleEventPar;<br>$(‘testInput’).onfocus = handleEventInput;<br>$(‘testParagraph’).addEventListener(‘focus’,handleEventPar,true);<br>$(‘testInput’).addEventListener(‘focus’,handleEventInput,true);’’’</p>
+<p>现在如果你让input获得焦点，这个事件会从window或者document开始向下移动到input，传播过程中，将会途径段落，并在段落上调用这个函数，尽管onfocus事件对段落本来是不起作用的。<br>因此，handleEventPar会执行，然后handleEventInput再执行。</p>
+<p>IE</p>
+<p>不幸的是，IE并不支持事件捕获，但它支持另外两个focusin和foucusout事件，这两个事件会冒泡。如果我们在IE中用这两个事件作为上船的准备，我们就可以准备航行了。<br>委托focus和blur事件</p>
+<p>因此，结论就是，要想让focus和blur事件委托像mouseover和mouseout那样，就必须在捕获阶段，为他们注册处理程序。为了正确的给一个可键盘访问的下拉菜单进行事件委托，你应该这样做：</p>
+<p>‘’’ <ol id="dropdown"><br>     <li><a href="#">List item 1</a><br>         <ol><br>             <li><a href="#">List item 1.1</a></li><br>             <li><a href="#">List item 1.2</a></li><br>             <li><a href="#">List item 1.3</a></li><br>         </ol><br>     </li><br>     [etc.]<br> </ol></p>
+<p> $(‘dropdown’).onmouseover = handleMouseOver;<br> $(‘dropdown’).onmouseout = handleMouseOut;<br> $(‘dropdown’).onfocusin = handleMouseOver;<br> $(‘dropdown’).onfocusout = handleMouseOut;<br> $(‘dropdown’).addEventListener(‘focus’,handleMouseOver,true);<br> $(‘dropdown’).addEventListener(‘blur’,handleMouseOut,true);’’’</p>
+<p>这样你就可以成功的委托blur和focus事件了。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/10/30/Delegating-the-focus-and-blur-events/" data-title="Delegating the focus and blur events | Daydreamer-Xyf" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/10/30/hello-world/"  title="Hello World">
+ <strong>下一篇：</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="xyf993 for https://github.com/xyf993" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> You cannot improve your past, but you can improve your future.  <br/>
+			learn and live.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2786306640" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/xyf993 for https://github.com/xyf993" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:455752816@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="Ebtitel">Ebtitel</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe6d1f421bbc9962127a50488f9ed37d1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
