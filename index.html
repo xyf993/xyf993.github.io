@@ -81,6 +81,57 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/11/17/CSS3写的时钟/" title="CSS3写的时钟" itemprop="url">CSS3写的时钟</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-17T13:13:05.000Z" itemprop="datePublished"> 發表於 2015-11-17</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;" target="_blank" rel="external">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</a></p>
+<html xmlns="http://www.w3.org/1999/xhtml"><br><head><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><br><title></title><br><style id="css"><br>#wrap {<br>    margin: 30px auto;<br>    border:1px solid black;<br>    height: 300px;<br>    width:300px;<br>    border-radius:50%;<br>    position: relative;<br>}<br>#list {<br>    list-style:none;<br>}<br>#list li {<br>    height: 4px;width: 2px;background:black;position:absolute;<br>    -webkit-transform-origin:center 150px;<br>    top:0;left: 150px;<br>}<br>#list li:nth-of-type(5n+1){<br>    height: 10px;<br>}<br>#hour {<br>    height: 70px;width: 5px;background:black;<br>    position:absolute;<br>    left: 150px;<br>    top:80px;<br>    -webkit-transform-origin:right bottom;<br>}<br>#min {<br>    height: 90px;width: 3px;background:black;<br>    position:absolute;<br>    left: 150px;<br>    top:60px;<br>    -webkit-transform-origin:right bottom;}<br>#sec {<br>    height: 100px;width: 2px;background:red;<br>    position:absolute;<br>    left: 150px;<br>    top:40px;<br>    -webkit-transform-origin:right bottom;}<br>#dot {<br>    height: 30px;width: 30px;background:black;<br>    position:absolute;border-radius:50%;<br>    left: 135px;<br>    top:135px;<br>}<br></style><br></head><br><body><br>  <div id="wrap"><br>    <ul id="list"></ul><br>    <div id="hour"></div><br>    <div id="min"></div><br>    <div id="sec"></div><br>    <div id="dot"></div><br>  </div><br><br><script><br>    var hour=document.getElementById(‘hour’);<br>    var min=document.getElementById(‘min’);<br>    var sec=document.getElementById(‘sec’);<br>    var oUl=document.getElementById(‘list’);<br>    var oCss=document.getElementById(‘css’);<br>    var aLi=’’;<br>    var sCss=’’;<br>    for( var i= 0; i &lt; 60; i++ ) {<br>        aLi+=’<li></li>‘;<br><br>        sCss+=”#wrap ul li:nth-of-type(“+(i+1)+”){-webkit-transform:rotate(“+i<em>6+”deg);}”;<br>    }<br>  oUl.innerHTML=aLi;<br>  oCss.innerHTML+=sCss;<br><br>function change(){<br>    var time = new Date();<br>    var s=time.getSeconds();<br>    var m=time.getMinutes()+s/60;<br>    var h=time.getHours()+m/60;<br><br><br><br>    h=h&gt;12?h-12:h;<br><br>    hour.style.webkitTransform=’rotate(‘+h</em>30+’deg)’;<br>    min.style.webkitTransform=’rotate(‘+m<em>6+’deg)’;<br>    sec.style.webkitTransform=’rotate(‘+s</em>6+’deg)’;<br>}<br><br>setInterval(change,1000);<br><br></script><br></body><br></html>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/10/30/Delegating-the-focus-and-blur-events/" title="Delegating the focus and blur events" itemprop="url">Delegating the focus and blur events</a>
   </h1>
   <p class="article-author">By
