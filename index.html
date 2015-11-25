@@ -81,6 +81,66 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/11/25/DOCTYPE与浏览器模式/" title="DOCTYPE与浏览器模式" itemprop="url">DOCTYPE与浏览器模式</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-25T12:55:25.000Z" itemprop="datePublished"> 發表於 2015-11-25</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>DOCTYPE</p>
+<p>　　文档类型声明DTD，位于页面最开始的位置，作用是指示浏览器关于页面用哪个版本的HTML进行编写，以决定浏览器采用哪种渲染模式，不同的渲染模式会影响到浏览器对CSS甚至Javscript的解析，特别是在IE浏览器中，必不可少。</p>
+<p>浏览器的模式 </p>
+<p>　　1.怪异模式（quirk mode）：也叫混杂模式，在这种模式下，浏览器会向后兼容，保留一些古老的浏览器的一些不符合标准的行为，比如IE老版本中对盒模型的解析。</p>
+<p>　　2.标准模式（standards mode）：也叫严格模式，浏览器会尽量执行HTML和CSS规范所指定的行为。</p>
+<p>　　3.准标准模型（almost standards mode）：与标准模式类似，但有些小的差别。</p>
+<p>document.compatMode可以判断当前模式<br>    “BackCompat”:怪异模式<br>    “CSS1Compat”:标准模式<br>为什么会有这三种模式?</p>
+<p>　　最早浏览器大战时，网景和IE对网页各有不同的实现方式，所以当时会分别为这两个浏览器编写不同的版本，而到了W3C指定了标准后，就不再继续使用这种页面了，导致很多老的站点不能使用，所以怪异模式诞生了，用来模拟这些老版本的浏览器来渲染页面，以保持页面正常显示。不使用文档声明或者使用了浏览器无法识别的文档声明就会触发怪异模式。</p>
+<p>上面说到DOCTYPE应该出现在页面最上方，如果在这之前出现了其他内容会发生什么情况？</p>
+<p>　　如果出现的是HTML标签和普通文本，会导致所有浏览器进入混杂模式。</p>
+<p>　　如果出现的是HTML注释和XML声明，在大多数非IE的浏览器中都还是能正常解析到DOCTYPE，在IE6中，XML声明会导致混杂模式，而HTML注释会导致所有IE进入混杂模式。但是有种情况除外，就是IE条件注释，其他浏览器会忽略，IE仍能保证标准模式。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/11/17/CSS3写的简单时钟/" title="CSS3写的简单时钟" itemprop="url">CSS3写的简单时钟</a>
   </h1>
   <p class="article-author">By
