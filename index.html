@@ -47,7 +47,7 @@
 				<h1 class="site-name"><a href="/" title="Daydreamer-Xyf">Daydreamer-Xyf</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -63,7 +63,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -81,6 +81,64 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/03/07/使用Jquery时注意点/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-07T07:45:43.013Z" itemprop="datePublished"> 發表於 2016-03-07</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="使用Jquery时注意点">使用Jquery时注意点</h1><p>标签（空格分隔）： 未分类</p>
+<hr>
+<p>1.命名冲突<br>当Jquery和其他库一起加载时，可能会发生命名冲突<br>解决办法：<br>    a.如果其他库先加载,就是用<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b.&#22914;&#26524;&#22312;&#20854;&#20182;&#24211;&#20043;&#21069;&#24341;&#20837;&#65292;&#23601;&#30452;&#25509;&#20351;&#29992;Jquery&#20195;&#26367;```$</span><br></pre></td></tr></table></figure></p>
+<p>2.<code>$(document).ready()</code><br>JQ中使用的是<code>$(document).ready()</code>与<code>window.onload</code>有几点不同<br>a.时机不同。前者是DOM就绪时可以使用，后者是等待页面中所有资源加载完毕，所以前者更快能与页面交互。<br>b.如果写有多个<code>window.onload</code>后面会覆盖前面的内容。但是<code>$(document).ready()</code>不会，它会按顺序依次执行。</p>
+<p>3.几个删除节点方法的区别<br>remove:删除节点，并且删除绑定的事件<br>detach：删除后不会删除绑定的事件<br>empty：清空节点的内容</p>
+<p>4.css()和height()获取值<br>前者是样式设置值，后者是实际值</p>
+<p>5.动画<br>如果多个属性同时传给animate,它们会同时执行、链式调用会一个个执行，但是如果后面链式调用css()方法，css不会等待前面动画，而会立即执行。<br>在animate中用回调函数也可以按顺序执行。停止动画时调到末尾状态只能到达停止的当前动画的末尾状态。</p>
+<p>6.几个绑定事件函数的区别<br>bind()只能为已经存在的元素绑定事件<br>live()可以为动态生成的绑定，但是性能不如delegate好<br>delegate()可以为动态生成的绑定<br>on()新版本中的，可以用来代替以上三种方法，推荐使用这种<br>相应的   用off()代替unbind、die、undelegate</p>
+<p>7.编写JQ插件<br>  <code>$.extend()</code>全局函数插件直接在Jqeury对象上调用<br>  <code>$.fn.extend()</code>封装对象的插件 可在任何query对象上调用<br>  注意编写插件时  最好在开始和结束都加上分号  以保证正常使用</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/02/22/link和@import的区别/" title="" itemprop="url"></a>
   </h1>
   <p class="article-author">By
@@ -88,7 +146,7 @@
 		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-22T12:48:48.107Z" itemprop="datePublished"> Published 2016-02-22</time>
+    <time datetime="2016-02-22T12:48:48.107Z" itemprop="datePublished"> 發表於 2016-02-22</time>
     
   </p>
 </header>
@@ -141,7 +199,7 @@
 		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-22T12:38:15.292Z" itemprop="datePublished"> Published 2016-02-22</time>
+    <time datetime="2016-02-22T12:38:15.292Z" itemprop="datePublished"> 發表於 2016-02-22</time>
     
   </p>
 </header>
@@ -194,7 +252,7 @@
 		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-25T12:55:25.000Z" itemprop="datePublished"> Published 2015-11-25</time>
+    <time datetime="2015-11-25T12:55:25.000Z" itemprop="datePublished"> 發表於 2015-11-25</time>
     
   </p>
 </header>
@@ -254,7 +312,7 @@
 		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-17T13:42:18.000Z" itemprop="datePublished"> Published 2015-11-17</time>
+    <time datetime="2015-11-17T13:42:18.000Z" itemprop="datePublished"> 發表於 2015-11-17</time>
     
   </p>
 </header>
@@ -304,7 +362,7 @@
 		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-30T13:00:09.000Z" itemprop="datePublished"> Published 2015-10-30</time>
+    <time datetime="2015-10-30T13:00:09.000Z" itemprop="datePublished"> 發表於 2015-10-30</time>
     
   </p>
 </header>
@@ -389,7 +447,7 @@
 		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-27T13:13:40.000Z" itemprop="datePublished"> Published 2015-10-27</time>
+    <time datetime="2015-10-27T13:13:40.000Z" itemprop="datePublished"> 發表於 2015-10-27</time>
     
   </p>
 </header>
@@ -445,7 +503,7 @@
 		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-26T08:11:44.000Z" itemprop="datePublished"> Published 2015-10-26</time>
+    <time datetime="2015-10-26T08:11:44.000Z" itemprop="datePublished"> 發表於 2015-10-26</time>
     
   </p>
 </header>
@@ -506,7 +564,7 @@
 		<a href="/about" title="Ebtitel" target="_blank" itemprop="author">Ebtitel</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-21T02:45:54.000Z" itemprop="datePublished"> Published 2015-10-21</time>
+    <time datetime="2015-10-21T02:45:54.000Z" itemprop="datePublished"> 發表於 2015-10-21</time>
     
   </p>
 </header>
@@ -566,15 +624,15 @@
 
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github Card</p>
+<p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="xyf993" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -587,7 +645,7 @@
   
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
         
           <li>
@@ -609,11 +667,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -762,7 +820,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
